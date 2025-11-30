@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/gaveloc_core",
+    "crates/gaveloc_adapters",
+    "apps/gaveloc_ui",
+    "apps/gaveloc_cli",
+]
+
+[workspace.dependencies]
+rstest = "0.25"
+insta = { version = "1.42", features = ["yaml"] }

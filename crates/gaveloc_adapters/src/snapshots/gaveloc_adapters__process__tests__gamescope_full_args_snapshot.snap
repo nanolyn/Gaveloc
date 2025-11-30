@@ -1,0 +1,15 @@
+---
+source: crates/gaveloc_adapters/src/process.rs
+expression: build_wrapper_args(&settings)
+---
+- gamescope
+- "-W"
+- "2560"
+- "-H"
+- "1440"
+- "-r"
+- "165"
+- "-f"
+- "--rt"
+- "--hdr-enabled"
+- "--"

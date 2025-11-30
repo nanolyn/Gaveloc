@@ -1,0 +1,26 @@
+---
+source: crates/gaveloc_core/src/config.rs
+expression: settings
+---
+game:
+  path: ~
+  region: europe
+  language: english
+  gamemode: true
+  mangohud: false
+  gamescope: false
+  gamescope_settings:
+    width: ~
+    height: ~
+    refresh_rate: ~
+    fullscreen: false
+    borderless: false
+    extra_args: ~
+wine:
+  runner_path: ~
+  prefix_path: ~
+  esync: true
+  fsync: true
+  winesync: false
+  dxvk_hud: ~
+log_level: info

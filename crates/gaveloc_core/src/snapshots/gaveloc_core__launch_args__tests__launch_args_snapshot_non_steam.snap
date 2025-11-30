@@ -1,0 +1,5 @@
+---
+source: crates/gaveloc_core/src/launch_args.rs
+expression: build_launch_args(&params)
+---
+DEV.DataPathType=1 DEV.MaxEntitledExpansionID=4 DEV.TestSID=bnyzcPNyothiBfMmAbgicg== DEV.UseSqPack=1 SYS.Region=1 language=0 ver=2024.01.01.0000.0000 IsSteam=0

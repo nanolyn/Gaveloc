@@ -1,0 +1,15 @@
+---
+source: crates/gaveloc_adapters/src/process.rs
+expression: build_wrapper_args(&settings)
+---
+- gamemoderun
+- mangohud
+- gamescope
+- "-W"
+- "1920"
+- "-H"
+- "1080"
+- "-r"
+- "60"
+- "-b"
+- "--"

@@ -1,0 +1,11 @@
+[package]
+name = "gaveloc_ui"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gaveloc_core = { path = "../../crates/gaveloc_core" }
+gaveloc_adapters = { path = "../../crates/gaveloc_adapters" }
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+# iced = "0.12" # Recommended for the GUI, uncomment when ready
