@@ -4,7 +4,6 @@ expression: settings
 ---
 game:
   path: ~
-  region: europe
   language: english
   gamemode: true
   mangohud: false

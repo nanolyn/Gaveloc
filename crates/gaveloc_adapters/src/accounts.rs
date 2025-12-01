@@ -85,11 +85,7 @@ impl AccountRepository for FileAccountRepository {
         store.accounts.retain(|a| &a.id != id);
 
         // Clear default if it was this account
-        if store
-            .default_account
-            .as_ref()
-            .map(|s| s.as_str())
-            == Some(id.as_str())
+        if store.default_account.as_deref() == Some(id.as_str())
         {
             store.default_account = None;
         }
@@ -127,7 +123,6 @@ impl AccountRepository for FileAccountRepository {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gaveloc_core::config::Region;
     use tempfile::tempdir;
 
     #[tokio::test]
@@ -140,7 +135,7 @@ mod tests {
         assert!(accounts.is_empty());
 
         // Create account
-        let account = Account::new("TestUser".to_string(), Region::Europe);
+        let account = Account::new("TestUser".to_string());
         repo.save_account(&account).await.unwrap();
 
         // Retrieve
@@ -164,7 +159,7 @@ mod tests {
         let repo = FileAccountRepository::new(dir.path().to_path_buf());
 
         // Create account
-        let mut account = Account::new("TestUser".to_string(), Region::Europe);
+        let mut account = Account::new("TestUser".to_string());
         repo.save_account(&account).await.unwrap();
 
         // Update account
@@ -187,8 +182,8 @@ mod tests {
         let dir = tempdir().unwrap();
         let repo = FileAccountRepository::new(dir.path().to_path_buf());
 
-        let account1 = Account::new("User1".to_string(), Region::Europe);
-        let account2 = Account::new("User2".to_string(), Region::NorthAmerica);
+        let account1 = Account::new("User1".to_string());
+        let account2 = Account::new("User2".to_string());
 
         repo.save_account(&account1).await.unwrap();
         repo.save_account(&account2).await.unwrap();
@@ -208,8 +203,8 @@ mod tests {
         let dir = tempdir().unwrap();
         let repo = FileAccountRepository::new(dir.path().to_path_buf());
 
-        let account1 = Account::new("User1".to_string(), Region::Europe);
-        let account2 = Account::new("User2".to_string(), Region::NorthAmerica);
+        let account1 = Account::new("User1".to_string());
+        let account2 = Account::new("User2".to_string());
 
         repo.save_account(&account1).await.unwrap();
         repo.save_account(&account2).await.unwrap();

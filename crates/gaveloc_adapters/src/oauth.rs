@@ -1,8 +1,6 @@
-use std::path::Path;
-
 use async_trait::async_trait;
 use gaveloc_core::config::Region;
-use gaveloc_core::entities::{Credentials, LoginResult, LoginState, OauthLoginResult};
+use gaveloc_core::entities::{Credentials, OauthLoginResult};
 use gaveloc_core::error::OauthError;
 use gaveloc_core::ports::Authenticator;
 use gaveloc_core::Error;
@@ -10,6 +8,8 @@ use regex::Regex;
 use reqwest::{header, Client};
 use sha1::{Digest, Sha1};
 use tracing::{debug, info, instrument, warn};
+
+use crate::network::build_oauth_client;
 
 const OAUTH_LOGIN_URL: &str = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top";
 const OAUTH_SEND_URL: &str = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send";
@@ -23,12 +23,7 @@ pub struct SquareEnixAuthenticator {
 impl SquareEnixAuthenticator {
     pub fn new() -> Result<Self, Error> {
         let user_agent = generate_user_agent();
-
-        let client = Client::builder()
-            .cookie_store(false)
-            .build()
-            .map_err(|e| Error::Network(format!("failed to create HTTP client: {}", e)))?;
-
+        let client = build_oauth_client(&user_agent)?;
         Ok(Self { client, user_agent })
     }
 
@@ -215,12 +210,6 @@ impl SquareEnixAuthenticator {
     }
 }
 
-impl Default for SquareEnixAuthenticator {
-    fn default() -> Self {
-        Self::new().expect("failed to create authenticator")
-    }
-}
-
 #[async_trait]
 impl Authenticator for SquareEnixAuthenticator {
     #[instrument(skip(self, credentials))]
@@ -248,25 +237,6 @@ impl Authenticator for SquareEnixAuthenticator {
         }
 
         Ok(result)
-    }
-
-    #[instrument(skip(self, oauth_result))]
-    async fn register_session(
-        &self,
-        oauth_result: &OauthLoginResult,
-        _game_path: &Path,
-    ) -> Result<LoginResult, Error> {
-        // TODO: Implement session registration with patch-gamever server
-        // This requires reading game version files and sending hash verification
-        // For now, return Ok state with the session ID as unique ID
-
-        info!("session registration (stub) - returning OAuth session");
-
-        Ok(LoginResult {
-            state: LoginState::Ok,
-            oauth: Some(oauth_result.clone()),
-            unique_id: Some(oauth_result.session_id.clone()),
-        })
     }
 }
 
@@ -408,5 +378,32 @@ mod tests {
         let error_msg = captures.name("errorMessage").unwrap().as_str();
 
         assert_eq!(error_msg, "ID or password is incorrect");
+    }
+
+    #[test]
+    fn test_square_enix_authenticator_new() {
+        let result = SquareEnixAuthenticator::new();
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn test_parse_oauth_error_additional_cases() {
+        // Test suspended account
+        assert!(matches!(
+            parse_oauth_error("Your account has been suspended"),
+            OauthError::AccountLocked
+        ));
+
+        // Test rate limiting
+        assert!(matches!(
+            parse_oauth_error("Rate limited due to suspicious activity"),
+            OauthError::RateLimited
+        ));
+
+        // Test OTP variant
+        assert!(matches!(
+            parse_oauth_error("OTP verification failed"),
+            OauthError::InvalidOtp
+        ));
     }
 }

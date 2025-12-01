@@ -1,0 +1,157 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 500px;
+  padding: var(--spacing-md);
+}
+
+/* Header: title left, cancel right */
+.login-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-form-title {
+  margin: 0;
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+}
+
+.login-form-cancel {
+  height: 28px;
+  font-size: var(--font-size-xs);
+  padding: 0 var(--spacing-sm);
+}
+
+/* Error message */
+.login-form-error {
+  background-color: rgba(255, 85, 85, 0.1);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--color-error);
+  font-size: var(--font-size-xs);
+}
+
+/* Fields container: side by side when OTP enabled */
+.login-form-fields {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.login-form-fields .login-form-field {
+  flex: 1;
+}
+
+.login-form-fields.with-otp .login-form-field:first-child {
+  flex: 1.2;
+}
+
+.login-form-fields.with-otp .login-form-field:last-child {
+  flex: 1;
+}
+
+.login-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.login-form-field label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.login-form-field input {
+  height: 36px;
+  font-size: var(--font-size-sm);
+}
+
+/* OTP row with auto button */
+.login-form-otp-row {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.login-form-otp-row input {
+  flex: 1;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+.otp-listener-btn {
+  flex-shrink: 0;
+  width: 50px;
+  height: 36px;
+  font-size: var(--font-size-xs);
+  padding: 0;
+}
+
+.otp-listener-btn.active {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.otp-waiting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-form-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-style: italic;
+  text-align: center;
+}
+
+/* Footer: checkbox left, login button right */
+.login-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-bg-tertiary);
+}
+
+.login-form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+}
+
+.login-form-checkbox input[type='checkbox'] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+.login-form-checkbox span {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.login-form-submit {
+  min-width: 100px;
+}

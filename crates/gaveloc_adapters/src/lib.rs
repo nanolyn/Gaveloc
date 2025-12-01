@@ -1,17 +1,35 @@
 pub mod accounts;
+pub mod config_repository;
 pub mod configuration;
 pub mod credentials;
 pub mod fs;
+pub mod game_detection;
+pub mod integrity;
+pub mod ipc;
 pub mod network;
+pub mod news;
 pub mod oauth;
 pub mod otp_listener;
+pub mod patch;
 pub mod prefix;
 pub mod process;
 pub mod runner;
 pub mod telemetry;
+pub mod zipatch;
 
 // Re-exports for convenience
 pub use accounts::FileAccountRepository;
+pub use config_repository::FileConfigRepository;
 pub use credentials::KeyringCredentialStore;
+pub use game_detection::{detect_game_installations, get_default_install_path, is_valid_game_path, validate_game_path, ValidationResult};
+pub use integrity::GoatcorpIntegrityChecker;
+pub use ipc::UnixSocketPatcherIpc;
+pub use news::HttpNewsRepository;
+pub use network::{build_oauth_client, build_patch_client};
 pub use oauth::SquareEnixAuthenticator;
 pub use otp_listener::HttpOtpListener;
+pub use patch::{FileVersionRepository, HttpPatchDownloader, SquareEnixPatchServer};
+pub use prefix::LinuxPrefixManager;
+pub use process::LinuxProcessLauncher;
+pub use runner::{LinuxRunnerDetector, LinuxRunnerManager};
+pub use zipatch::ZiPatchParser;

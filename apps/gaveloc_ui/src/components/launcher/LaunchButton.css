@@ -1,0 +1,102 @@
+.launch-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.launch-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  min-width: 200px;
+}
+
+.launch-button:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.launch-button:active:not(:disabled) {
+  opacity: 0.9;
+}
+
+.launch-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.launch-button.running {
+  background: var(--color-success);
+}
+
+.launch-button.launching {
+  background: var(--color-warning);
+}
+
+.launch-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.launch-error {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(255, 85, 85, 0.1);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-md);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.launch-error-dismiss {
+  float: right;
+  opacity: 0.7;
+  font-size: var(--font-size-xs);
+}
+
+.launch-warnings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.launch-warning {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(255, 184, 108, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--color-warning);
+  font-size: var(--font-size-xs);
+}
+
+.launch-issues {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.launch-issue {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(255, 85, 85, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--color-error);
+  font-size: var(--font-size-xs);
+}

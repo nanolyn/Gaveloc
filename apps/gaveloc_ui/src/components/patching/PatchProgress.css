@@ -1,0 +1,136 @@
+.patch-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+}
+
+.patch-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.patch-progress-title {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.patch-progress-counter {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.patch-progress-info {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.patch-progress-repo {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-accent);
+  background-color: var(--color-bg-primary);
+  padding: 2px var(--spacing-xs);
+  border-radius: var(--radius-sm);
+}
+
+.patch-progress-version {
+  font-size: var(--font-size-xs);
+  font-family: monospace;
+  color: var(--color-text-secondary);
+}
+
+.patch-progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.patch-progress-bar {
+  height: 100%;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  transition: width 0.2s ease;
+}
+
+.patch-progress-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.patch-progress-bytes {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.patch-progress-speed {
+  font-size: var(--font-size-xs);
+  color: var(--color-success);
+}
+
+.patch-progress-percent {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.patch-progress-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--spacing-xs);
+}
+
+.patch-progress-actions button {
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+/* Error state */
+.patch-progress-error {
+  border: 1px solid var(--color-error);
+}
+
+.patch-progress-error .patch-progress-title {
+  color: var(--color-error);
+}
+
+.patch-progress-error-message {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background-color: rgba(255, 85, 85, 0.1);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+/* Cancelled state */
+.patch-progress-cancelled {
+  border: 1px solid var(--color-warning);
+}
+
+.patch-progress-cancelled .patch-progress-title {
+  color: var(--color-warning);
+}
+
+/* Completed state */
+.patch-progress-completed {
+  border: 1px solid var(--color-success);
+}
+
+.patch-progress-completed .patch-progress-title {
+  color: var(--color-success);
+}
+
+.patch-progress-check {
+  font-size: var(--font-size-xs);
+  color: var(--color-success);
+}

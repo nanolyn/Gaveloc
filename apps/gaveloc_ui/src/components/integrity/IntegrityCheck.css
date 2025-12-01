@@ -1,0 +1,267 @@
+.integrity-check {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+}
+
+.integrity-check-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.integrity-check-header h4 {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.integrity-check-counter {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.integrity-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Active checking state */
+.integrity-check-active {
+  border: 1px solid var(--color-accent);
+}
+
+.integrity-check-file {
+  font-size: var(--font-size-xs);
+  font-family: monospace;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.integrity-progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.integrity-progress-bar {
+  height: 100%;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  transition: width 0.2s ease;
+}
+
+.integrity-check-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.integrity-check-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.integrity-check-actions button {
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+/* Error state */
+.integrity-check-error {
+  border: 1px solid var(--color-error);
+}
+
+.integrity-check-error h4 {
+  color: var(--color-error);
+}
+
+.integrity-error-message {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background-color: rgba(255, 85, 85, 0.1);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+/* Success state */
+.integrity-check-success {
+  border: 1px solid var(--color-success);
+}
+
+.integrity-check-success h4 {
+  color: var(--color-success);
+}
+
+.integrity-success-message {
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  margin: var(--spacing-sm) 0 0 0;
+}
+
+/* Problems state */
+.integrity-check-problems {
+  border: 1px solid var(--color-warning);
+}
+
+.integrity-check-problems h4 {
+  color: var(--color-warning);
+}
+
+/* Results display */
+.integrity-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.integrity-result-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.integrity-result-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+}
+
+.integrity-result-icon.valid {
+  background-color: rgba(80, 250, 123, 0.2);
+  color: var(--color-success);
+}
+
+.integrity-result-icon.mismatch {
+  background-color: rgba(255, 184, 108, 0.2);
+  color: var(--color-warning);
+}
+
+.integrity-result-icon.missing {
+  background-color: rgba(255, 85, 85, 0.2);
+  color: var(--color-error);
+}
+
+.integrity-result-icon.unreadable {
+  background-color: rgba(160, 160, 160, 0.2);
+  color: var(--color-text-secondary);
+}
+
+.integrity-result-label {
+  flex: 1;
+  color: var(--color-text-primary);
+}
+
+.integrity-result-count {
+  font-family: monospace;
+  color: var(--color-text-secondary);
+}
+
+/* Toggle problems button */
+.integrity-toggle-problems {
+  background: none;
+  border: none;
+  padding: var(--spacing-xs) 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  cursor: pointer;
+  text-align: left;
+}
+
+.integrity-toggle-problems:hover {
+  text-decoration: underline;
+}
+
+/* Problems list */
+.integrity-problems-list {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--spacing-xs);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-sm);
+}
+
+.integrity-problem-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-family: monospace;
+}
+
+.integrity-problem-status {
+  font-weight: 500;
+}
+
+.integrity-problem-status.mismatch {
+  color: var(--color-warning);
+}
+
+.integrity-problem-status.missing {
+  color: var(--color-error);
+}
+
+.integrity-problem-status.unreadable {
+  color: var(--color-text-secondary);
+}
+
+.integrity-problem-path {
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.integrity-problem-more {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-style: italic;
+  padding-top: var(--spacing-xs);
+}
+
+/* Repair section */
+.integrity-repair-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-bg-primary);
+}
+
+.integrity-repair-warning {
+  font-size: var(--font-size-xs);
+  color: var(--color-warning);
+  margin: 0;
+}
+
+/* Repair result */
+.integrity-repair-result {
+  padding: var(--spacing-sm);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-sm);
+}
+
+.integrity-repair-result p {
+  margin: 0;
+}

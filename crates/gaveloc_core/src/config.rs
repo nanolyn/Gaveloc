@@ -2,6 +2,8 @@ use std::path::PathBuf;
 
 use serde::{Deserialize, Serialize};
 
+/// Region for Square Enix login servers (internal use only)
+/// Global accounts use Europe region by default
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
 #[serde(rename_all = "lowercase")]
 pub enum Region {
@@ -44,6 +46,7 @@ impl Language {
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
+#[serde(default)]
 pub struct Settings {
     pub game: GameSettings,
     pub wine: WineSettings,
@@ -51,6 +54,7 @@ pub struct Settings {
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone, Default)]
+#[serde(default)]
 pub struct GamescopeSettings {
     pub width: Option<u32>,
     pub height: Option<u32>,
@@ -61,18 +65,18 @@ pub struct GamescopeSettings {
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
+#[serde(default)]
 pub struct GameSettings {
     pub path: Option<PathBuf>,
-    pub region: Region,
     pub language: Language,
     pub gamemode: bool,
     pub mangohud: bool,
     pub gamescope: bool,
-    #[serde(default)]
     pub gamescope_settings: GamescopeSettings,
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
+#[serde(default)]
 pub struct WineSettings {
     pub runner_path: Option<PathBuf>,
     pub prefix_path: Option<PathBuf>,
@@ -96,7 +100,6 @@ impl Default for GameSettings {
     fn default() -> Self {
         Self {
             path: None,
-            region: Region::default(),
             language: Language::default(),
             gamemode: true,
             mangohud: false,
@@ -125,14 +128,6 @@ mod tests {
     use rstest::rstest;
 
     #[rstest]
-    #[case(Region::Japan, 1)]
-    #[case(Region::NorthAmerica, 2)]
-    #[case(Region::Europe, 3)]
-    fn test_region_ids(#[case] region: Region, #[case] expected: u32) {
-        assert_eq!(region.as_id(), expected);
-    }
-
-    #[rstest]
     #[case(Language::Japanese, 0)]
     #[case(Language::English, 1)]
     #[case(Language::German, 2)]
@@ -148,7 +143,6 @@ mod tests {
         assert_eq!(settings.log_level, "info");
 
         // Game defaults
-        assert_eq!(settings.game.region, Region::Europe);
         assert_eq!(settings.game.language, Language::English);
         assert!(settings.game.gamemode);
         assert!(!settings.game.mangohud);

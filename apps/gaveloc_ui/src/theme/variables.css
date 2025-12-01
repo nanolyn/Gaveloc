@@ -1,0 +1,137 @@
+:root {
+  /* Dracula Theme for Game Launcher
+   * Rich dark backgrounds with vibrant accents
+   * Clean surfaces with subtle depth
+   * Energetic colors for game-related actions
+   */
+
+  /* Background colors - Dracula palette */
+  --color-bg-primary: #282a36;
+  --color-bg-secondary: #21222c;
+  --color-bg-tertiary: #2d2f3a;
+  --color-bg-elevated: #343746;
+
+  /* Surface colors - For cards and panels */
+  --color-surface: #282a36;
+  --color-surface-hover: #44475a;
+
+  /* Text colors - Dracula foreground and comments */
+  --color-text-primary: #f8f8f2;
+  --color-text-secondary: #9399b2;
+  --color-text-muted: #6272a4;
+  --color-text-tertiary: #4d5066;
+
+  /* Accent colors - Dracula purple */
+  --color-accent: #bd93f9;
+  --color-accent-hover: #caa9ff;
+  --color-accent-active: #a87ddc;
+  --color-accent-subtle: rgba(189, 147, 249, 0.12);
+  --color-accent-glow: rgba(189, 147, 249, 0.4);
+
+  /* Secondary accent - Dracula cyan */
+  --color-secondary: #8be9fd;
+  --color-secondary-hover: #a4efff;
+  --color-secondary-subtle: rgba(139, 233, 253, 0.12);
+
+  /* Semantic colors - Dracula palette */
+  --color-success: #50fa7b;
+  --color-success-hover: #69ff8f;
+  --color-success-subtle: rgba(80, 250, 123, 0.12);
+  --color-success-glow: rgba(80, 250, 123, 0.4);
+
+  --color-warning: #f1fa8c;
+  --color-warning-hover: #f5fca0;
+  --color-warning-subtle: rgba(241, 250, 140, 0.12);
+
+  --color-error: #ff5555;
+  --color-error-hover: #ff6e6e;
+  --color-error-subtle: rgba(255, 85, 85, 0.12);
+
+  /* Special accent colors - Dracula palette */
+  --color-cyan: #8be9fd;
+  --color-pink: #ff79c6;
+  --color-yellow: #f1fa8c;
+  --color-orange: #ffb86c;
+
+  /* Input/Button colors */
+  --color-input-bg: var(--color-bg-tertiary);
+  --color-input-border: #44475a;
+  --color-input-focus: var(--color-accent);
+
+  /* Border colors - Dracula current line */
+  --color-border: #44475a;
+  --color-border-subtle: #383a4a;
+  --color-border-highlight: #555869;
+
+  /* Spacing - Generous for breathing room */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Border radius - Subtle, practical */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-2xl: 12px;
+  --radius-full: 9999px;
+
+  /* Transitions - Quick and minimal */
+  --transition-fast: 100ms ease;
+  --transition-normal: 150ms ease;
+  --transition-slow: 200ms ease;
+  --transition-bounce: 150ms ease;
+
+  /* Typography - Clear hierarchy */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 17px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 26px;
+  --font-size-3xl: 32px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Layout */
+  --header-height: 64px;
+  --sidebar-width: 240px;
+  --footer-height: 56px;
+  --max-content-width: 1400px;
+
+  /* Shadows - Minimal depth */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  /* Glows - Removed for utility app feel */
+  --glow-accent: none;
+  --glow-success: none;
+  --glow-subtle: none;
+
+  /* Backdrop blur - Minimal */
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(12px);
+
+  /* Z-index layers */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-tooltip: 500;
+}

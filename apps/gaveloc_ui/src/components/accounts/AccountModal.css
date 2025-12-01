@@ -1,0 +1,175 @@
+/* New wrapper for controlling modal content size and layout */
+.account-modal-inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px; /* Requested width */
+  max-height: 400px; /* Requested height */
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-primary); /* Match modal background */
+  border-radius: var(--radius-lg); /* Inherit modal border-radius */
+  overflow: hidden; /* Ensure content stays within bounds */
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Allow form to fill the wrapper */
+  padding: var(--spacing-lg);
+}
+
+/* Header with title and error */
+.account-form-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.account-form-title {
+  margin: 0;
+  font-size: var(--font-size-xl); /* Larger title */
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.account-form-error {
+  flex: 1;
+  background-color: rgba(255, 85, 85, 0.1);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--color-error);
+  font-size: var(--font-size-sm); /* Slightly larger error text */
+}
+
+/* Two-column body layout */
+.account-form-body {
+  display: flex;
+  flex: 1; /* Allow body to grow and shrink vertically */
+  gap: var(--spacing-lg);
+  overflow-y: auto; /* Scroll if content overflows */
+  padding-bottom: var(--spacing-md); /* Space before actions */
+}
+
+.account-form-left {
+  flex: 2; /* Give more width to form fields */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md); /* More space between fields */
+  padding-right: var(--spacing-lg); /* Visual separation from right pane */
+}
+
+.account-form-right {
+  flex: 1; /* Takes remaining width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically and horizontally */
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Form fields */
+.account-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs); /* Space between label and input */
+}
+
+.account-form-field label {
+  font-size: var(--font-size-sm); /* Standard label size */
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.account-form-field input,
+.account-form-field select {
+  height: 40px; /* Slightly taller inputs */
+  font-size: var(--font-size-md); /* Larger text in inputs */
+  padding: 0 var(--spacing-md);
+}
+
+.account-form-field input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Password row with save checkbox */
+.account-form-row {
+  display: flex;
+  align-items: flex-end; /* Align password field and checkbox */
+  gap: var(--spacing-sm);
+}
+
+.account-form-field-password {
+  flex: 1;
+}
+
+.password-saved-badge {
+  font-size: 10px; /* Slightly larger badge */
+  background-color: var(--color-success);
+  color: white;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+/* Checkbox styling (reusing general styles, but adjusting for context) */
+.account-form-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm); /* Space above options */
+}
+
+.account-form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+}
+
+.account-form-checkbox input[type='checkbox'] {
+  flex-shrink: 0;
+  width: 18px; /* Standard checkbox size */
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+}
+
+.account-form-checkbox span {
+  font-size: var(--font-size-md); /* Standard text size */
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* Action buttons */
+.account-form-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md); /* More padding above actions */
+  border-top: 1px solid var(--color-bg-tertiary);
+  margin-top: auto; /* Push actions to the bottom */
+}
+
+.account-form-actions-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-left: auto;
+}
+
+.account-form-actions button {
+  height: 36px; /* Standard button height */
+  font-size: var(--font-size-sm); /* Standard button font size */
+  padding: 0 var(--spacing-md);
+}

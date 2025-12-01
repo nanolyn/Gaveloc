@@ -1,0 +1,62 @@
+.settings-window {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--color-bg-primary);
+}
+
+.settings-window-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 32px;
+  background-color: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border-subtle);
+  user-select: none;
+  -webkit-user-select: none;
+  flex-shrink: 0;
+}
+
+.settings-window-title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  line-height: 32px;
+}
+
+.settings-window-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 36px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.settings-window-close:hover {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.settings-window-content {
+  flex: 1;
+  overflow: hidden;
+  padding: var(--spacing-md);
+}
+
+.settings-window-content .settings-view {
+  height: 100%;
+}
+
+.settings-window-content .settings-header {
+  display: none;
+}

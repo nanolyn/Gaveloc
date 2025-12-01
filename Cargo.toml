@@ -3,8 +3,9 @@ resolver = "2"
 members = [
     "crates/gaveloc_core",
     "crates/gaveloc_adapters",
-    "apps/gaveloc_ui",
+    "apps/gaveloc_ui/src-tauri",
     "apps/gaveloc_cli",
+    "apps/gaveloc_patcher",
 ]
 
 [workspace.dependencies]

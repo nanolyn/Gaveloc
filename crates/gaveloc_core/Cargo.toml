@@ -16,7 +16,8 @@ base64 = "0.21"
 rand = "0.8"
 generic-array = "0.14"
 byteorder = "1.4"
-tokio = { version = "1.0", features = ["sync"] }
+tokio = { version = "1.0", features = ["sync", "fs", "rt-multi-thread"] }
+crc32fast = "1.4"  # For ZiPatch checksum verification
 
 [dev-dependencies]
 rstest = { workspace = true }

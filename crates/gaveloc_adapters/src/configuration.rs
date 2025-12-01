@@ -53,7 +53,7 @@ pub fn get_configuration() -> Result<Settings, config::ConfigError> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gaveloc_core::config::{Region, Language};
+    use gaveloc_core::config::Language;
     use tempfile::tempdir;
     use std::io::Write;
     use serial_test::serial; // Import serial_test
@@ -70,7 +70,6 @@ mod tests {
         // Use dummy paths for config directories
         let settings = get_configuration_with_paths(Some(PathBuf::from("/nonexistent")), Some(PathBuf::from("/nonexistent"))).unwrap();
 
-        assert_eq!(settings.game.region, Region::Europe);
         assert_eq!(settings.game.language, Language::English);
         assert!(settings.game.gamemode);
         assert!(!settings.game.mangohud);
@@ -95,18 +94,16 @@ mod tests {
         let config_file_path = dir.path().join("config.toml");
 
         let config_content = r#"
-        game.region = "japan"
         game.language = "japanese"
         game.gamemode = false
         log_level = "debug"
         "#;
-        
+
         let mut file = std::fs::File::create(&config_file_path).unwrap();
         file.write_all(config_content.as_bytes()).unwrap();
 
         let settings = get_configuration_with_paths(Some(dir.path().to_path_buf()), Some(PathBuf::from("/nonexistent"))).unwrap();
 
-        assert_eq!(settings.game.region, Region::Japan);
         assert_eq!(settings.game.language, Language::Japanese);
         assert!(!settings.game.gamemode);
         assert_eq!(settings.log_level, "debug");
@@ -122,17 +119,14 @@ mod tests {
             }
         }
 
-        std::env::set_var("GAVELOC__GAME__REGION", "northamerica");
         std::env::set_var("GAVELOC__GAME__MANGOHUD", "true");
         std::env::set_var("GAVELOC__LOG_LEVEL", "trace");
 
         let settings = get_configuration_with_paths(Some(PathBuf::from("/nonexistent")), Some(PathBuf::from("/nonexistent"))).unwrap();
 
-        assert_eq!(settings.game.region, Region::NorthAmerica);
         assert!(settings.game.mangohud);
         assert_eq!(settings.log_level, "trace");
 
-        std::env::remove_var("GAVELOC__GAME__REGION");
         std::env::remove_var("GAVELOC__GAME__MANGOHUD");
         std::env::remove_var("GAVELOC__LOG_LEVEL");
     }
@@ -151,23 +145,23 @@ mod tests {
         let config_file_path = dir.path().join("config.toml");
 
         let config_content = r#"
-        game.region = "japan"
+        game.language = "japanese"
         log_level = "debug"
         "#;
-        
+
         let mut file = std::fs::File::create(&config_file_path).unwrap();
         file.write_all(config_content.as_bytes()).unwrap();
 
-        std::env::set_var("GAVELOC__GAME__REGION", "northamerica");
+        std::env::set_var("GAVELOC__GAME__LANGUAGE", "german");
         std::env::set_var("GAVELOC__LOG_LEVEL", "trace");
 
         let settings = get_configuration_with_paths(Some(dir.path().to_path_buf()), Some(PathBuf::from("/nonexistent"))).unwrap();
 
         // Environment variables should take precedence over file settings
-        assert_eq!(settings.game.region, Region::NorthAmerica);
+        assert_eq!(settings.game.language, Language::German);
         assert_eq!(settings.log_level, "trace");
 
-        std::env::remove_var("GAVELOC__GAME__REGION");
+        std::env::remove_var("GAVELOC__GAME__LANGUAGE");
         std::env::remove_var("GAVELOC__LOG_LEVEL");
     }
 }

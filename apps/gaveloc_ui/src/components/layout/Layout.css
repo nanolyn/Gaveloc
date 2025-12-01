@@ -1,0 +1,46 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.app-body {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-xl);
+  padding-bottom: calc(var(--spacing-xl) + var(--footer-height)); /* Extra padding for footer */
+  background: transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom scrollbar for app content */
+.app-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app-content::-webkit-scrollbar-thumb {
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+.app-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border);
+}
